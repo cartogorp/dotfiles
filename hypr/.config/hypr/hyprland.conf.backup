@@ -1,0 +1,308 @@
+#!      ░▒▒▒░░░▓▓           ___________
+#!    ░░▒▒▒░░░░░▓▓        //___________/
+#!   ░░▒▒▒░░░░░▓▓     _   _ _    _ _____
+#!   ░░▒▒░░░░░▓▓▓▓▓▓ | | | | |  | |  __/
+#!    ░▒▒░░░░▓▓   ▓▓ | |_| | |_/ /| |___
+#!     ░▒▒░░▓▓   ▓▓   \__  |____/ |____/
+#!       ░▒▓▓   ▓▓  //____/
+
+# Minimal HyprLand configuration for debugging
+
+# ===== BASIC ENVIRONMENT =====
+# Main modifier
+$mainMod = SUPER
+
+# Default applications
+$TERMINAL = kitty
+$BROWSER = firefox
+$EXPLORER = dolphin
+$EDITOR = code
+
+# ===== MONITOR CONFIGURATION =====
+monitor = ,preferred,auto,auto
+
+# ===== CORE FUNCTIONALITY =====
+general {
+    gaps_in = 3
+    gaps_out = 8
+    border_size = 2
+    col.active_border = rgba(ca9ee6ff) rgba(f2d5cfff) 45deg
+    col.inactive_border = rgba(b4befecc) rgba(6c7086cc) 45deg
+    layout = dwindle
+    resize_on_border = true
+}
+
+# ===== INPUT SETTINGS =====
+input {
+    kb_layout = us
+    follow_mouse = 1
+    sensitivity = 0.0
+    force_no_accel = 1
+    numlock_by_default = true
+}
+
+# ===== DECORATION =====
+decoration {
+    rounding = 10
+    
+    blur {
+        enabled = yes
+        size = 6
+        passes = 3
+        new_optimizations = on
+        ignore_opacity = on
+        xray = false
+    }
+    
+    active_opacity = 0.90
+    inactive_opacity = 0.75
+    fullscreen_opacity = 1
+}
+
+# ===== ANIMATIONS =====
+animations {
+    enabled = yes
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, wind, slide
+    animation = fade, 1, 10, default
+    animation = workspaces, 1, 5, wind
+}
+
+# ===== LAYOUT =====
+dwindle {
+    pseudotile = yes
+    preserve_split = yes
+}
+
+master {
+    new_status = master
+}
+
+# ===== WINDOW RULES =====
+windowrulev2 = float,class:^(pavucontrol)$
+windowrulev2 = float,class:^(nm-connection-editor)$
+windowrulev2 = float,class:^(org.kde.polkit-kde-authentication-agent-1)$
+
+# ===== MISC SETTINGS =====
+misc {
+    disable_hyprland_logo = true
+    disable_splash_rendering = true
+    force_default_wallpaper = 0
+}
+
+# ===== ESSENTIAL ENVIRONMENT VARIABLES =====
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = XDG_SESSION_TYPE,wayland
+env = XDG_SESSION_DESKTOP,Hyprland
+env = QT_QPA_PLATFORM,wayland;xcb
+env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+env = GDK_BACKEND,wayland
+
+# ===== KEY BINDINGS =====
+# Basic key bindings
+bind = $mainMod, Q, killactive
+bind = $mainMod, M, exit
+bind = $mainMod, V, togglefloating
+bind = $mainMod, P, pseudo
+bind = $mainMod, J, togglesplit
+bind = $mainMod, Return, exec, $TERMINAL
+bind = $mainMod, E, exec, $EXPLORER
+bind = $mainMod, B, exec, $BROWSER
+
+# Move focus with mainMod + arrow keys
+bind = $mainMod, left, movefocus, l
+bind = $mainMod, right, movefocus, r
+bind = $mainMod, up, movefocus, u
+bind = $mainMod, down, movefocus, d
+
+# Switch workspaces with mainMod + [0-9]
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod, 0, workspace, 10
+
+# Move active window to a workspace with mainMod + SHIFT + [0-9]
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+bind = $mainMod SHIFT, 6, movetoworkspace, 6
+bind = $mainMod SHIFT, 7, movetoworkspace, 7
+bind = $mainMod SHIFT, 8, movetoworkspace, 8
+bind = $mainMod SHIFT, 9, movetoworkspace, 9
+bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+# ===== STARTUP APPLICATIONS =====
+exec-once = waybar
+exec-once = dunst
+exec-once = nm-applet --indicator
+
+# ===== NVIDIA SETTINGS =====
+env = LIBVA_DRIVER_NAME,nvidia
+env = GBM_BACKEND,nvidia-drm
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+
+#!      ░▒▒▒░░░▓▓           ___________
+#!    ░░▒▒▒░░░░░▓▓        //___________/
+#!   ░░▒▒▒░░░░░▓▓     _   _ _    _ _____
+#!   ░░▒▒░░░░░▓▓▓▓▓▓ | | | | |  | |  __/
+#!    ░▒▒░░░░▓▓   ▓▓ | |_| | |_/ /| |___
+#!     ░▒▒░░▓▓   ▓▓   \__  |____/ |____/
+#!       ░▒▓▓   ▓▓  //____/
+
+#? This is a temporary configuration file for troubleshooting purposes
+#? It uses absolute paths and disables potentially problematic sourcing
+
+# Source core Hyde configuration
+source = $HOME/.local/share/hyde/hyprland.conf
+
+# Monitor configuration - simple default
+monitor = ,preferred,auto,auto
+
+# Input configuration
+input {
+    force_no_accel = 1
+    numlock_by_default = true
+}
+
+# Gestures
+gestures {
+    workspace_swipe = true
+}
+
+# Layout settings
+dwindle {
+    pseudotile = yes
+    preserve_split = yes
+}
+
+master {
+    new_status = master
+}
+
+# Decorations and visuals
+decoration {
+    rounding = 10
+    shadow:enabled = false
+    
+    blur {
+        enabled = yes
+        size = 6
+        passes = 3
+        new_optimizations = on
+        ignore_opacity = on
+        xray = false
+    }
+    
+    dim_special = 0.3
+    active_opacity = 0.90
+    inactive_opacity = 0.75
+    fullscreen_opacity = 1
+}
+
+# Animations
+animations {
+    enabled = yes
+    bezier = wind, 0.05, 0.9, 0.1, 1.05
+    bezier = winIn, 0.1, 1.1, 0.1, 1.1
+    bezier = winOut, 0.3, -0.3, 0, 1
+    bezier = liner, 1, 1, 1, 1
+    animation = windows, 1, 6, wind, slide
+    animation = windowsIn, 1, 6, winIn, slide
+    animation = windowsOut, 1, 5, winOut, slide
+    animation = windowsMove, 1, 5, wind, slide
+    animation = border, 1, 1, liner
+    animation = borderangle, 1, 30, liner, once
+    animation = fade, 1, 10, default
+    animation = workspaces, 1, 5, wind
+}
+
+# General settings
+general {
+    gaps_in = 3
+    gaps_out = 8
+    border_size = 2
+    col.active_border = rgba(ca9ee6ff) rgba(f2d5cfff) 45deg
+    col.inactive_border = rgba(b4befecc) rgba(6c7086cc) 45deg
+    layout = dwindle
+    resize_on_border = true
+}
+
+# Misc settings
+misc {
+    vrr = 0
+    disable_hyprland_logo = true
+    disable_splash_rendering = true
+    force_default_wallpaper = 0
+}
+
+# Xwayland settings
+xwayland {
+    force_zero_scaling = true
+}
+
+# Environment variables
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = XDG_SESSION_TYPE,wayland
+env = XDG_SESSION_DESKTOP,Hyprland
+env = QT_QPA_PLATFORM,wayland;xcb
+env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+env = MOZ_ENABLE_WAYLAND,1
+
+# Terminal and browser definitions for key bindings
+$TERMINAL = kitty
+$BROWSER = opera
+
+# Basic window rules
+windowrulev2 = float, class:^(org.kde.polkit-kde-authentication-agent-1)$
+windowrulev2 = float, class:^(pavucontrol)$
+windowrulev2 = float, class:^(blueman-manager)$
+windowrulev2 = float, class:^(nm-connection-editor)$
+
+# Layer rules for notifications and menus
+layerrule = blur,rofi
+layerrule = ignorezero,rofi
+layerrule = blur,notifications
+layerrule = ignorezero,notifications
+
+# Basic keybinds
+$mainMod = SUPER
+
+bind = $mainMod, Return, exec, $TERMINAL
+bind = $mainMod, Q, killactive, 
+bind = $mainMod SHIFT, E, exit, 
+bind = $mainMod, E, exec, $TERMINAL
+bind = $mainMod, V, togglefloating, 
+bind = $mainMod, F, fullscreen, 
+bind = $mainMod, Space, exec, rofi -show drun
+
+# Workspace navigation
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+
+# Move windows to workspaces
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+
+# Start essential services
+exec-once = waybar
+exec-once = dunst
+exec-once = /usr/lib/polkit-kde-authentication-agent-1
+
+# Note: This is a minimal configuration for troubleshooting
+# After identifying the issue, you can gradually re-enable your full configuration
+

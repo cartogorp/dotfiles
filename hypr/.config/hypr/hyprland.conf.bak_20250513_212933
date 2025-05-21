@@ -1,0 +1,64 @@
+# Monitor configuration
+monitor = eDP-1,1920x1200@60,0x0,1.0
+
+# Source colors and themes
+source = ~/.config/hypr/colors.conf
+
+# Environment variables
+env = XCURSOR_SIZE,24
+env = QT_QPA_PLATFORMTHEME,qt5ct
+env = GTK_THEME,Code-Garden
+env = XCURSOR_THEME,Breeze_Light
+
+# Input configuration
+input {
+    kb_layout = us
+    follow_mouse = 1
+    sensitivity = 0
+    touchpad {
+        natural_scroll = true
+        tap-to-click = true
+    }
+}
+
+# General window behavior
+general {
+    gaps_in = 3
+    gaps_out = 8
+    border_size = 2
+    layout = dwindle
+}
+
+# Basic binds
+bind = SUPER, Return, exec, kitty
+bind = SUPER, Q, killactive
+bind = SUPER, Space, togglefloating
+bind = SUPER, F, fullscreen
+bind = SUPER, left, movefocus, l
+bind = SUPER, right, movefocus, r
+bind = SUPER, up, movefocus, u
+bind = SUPER, down, movefocus, d
+
+# Additional useful binds
+bind = SUPER, Tab, workspace, e+1
+bind = SUPER SHIFT, Tab, workspace, e-1
+bind = SUPER, 1, workspace, 1
+bind = SUPER, 2, workspace, 2
+bind = SUPER, 3, workspace, 3
+bind = SUPER, 4, workspace, 4
+bind = SUPER, 5, workspace, 5
+bind = SUPER SHIFT, 1, movetoworkspace, 1
+bind = SUPER SHIFT, 2, movetoworkspace, 2
+bind = SUPER SHIFT, 3, movetoworkspace, 3
+bind = SUPER SHIFT, 4, movetoworkspace, 4
+bind = SUPER SHIFT, 5, movetoworkspace, 5
+
+# Window rules
+windowrulev2 = opacity 0.95 0.95,class:^(kitty)$
+windowrulev2 = float,class:^(pavucontrol)$
+windowrulev2 = float,title:^(Volume Control)$
+
+# Startup
+exec-once = waybar
+exec-once = nm-applet --indicator
+exec-once = hyprpaper

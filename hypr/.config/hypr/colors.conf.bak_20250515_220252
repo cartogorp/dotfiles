@@ -1,0 +1,18 @@
+# Colors for Hyprland
+general {
+    col.active_border = rgba(ee808080)
+    col.inactive_border = rgba(aa404040)
+}
+
+decoration {
+    rounding = 8
+    blur {
+        enabled = true
+        size = 3
+        passes = 1
+        new_optimizations = true
+    }
+    active_opacity = 0.95
+    inactive_opacity = 0.85
+    fullscreen_opacity = 1.0
+}
