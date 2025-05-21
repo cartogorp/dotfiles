@@ -1,0 +1,40 @@
+# Basic wofi configuration
+
+# General UI configuration
+width=35%
+height=50%
+location=center
+orientation=vertical
+halign=fill
+line_wrap=off
+dynamic_lines=true
+
+# Functionality
+show=drun
+prompt=Search Applications
+normal_window=false
+layer=overlay
+term=kitty
+allow_images=true
+allow_markup=true
+image_size=24
+insensitive=true
+sort_order=default
+gtk_dark=true
+hide_scroll=true
+no_actions=true
+search=true
+matching=fuzzy
+
+# Performance
+exec_search=true
+cache_file=~/.cache/wofi-cache.json
+parse_search=true
+insensitive=true
+content_halign=fill
+key_up=Control_L-p
+key_down=Control_L-n
+key_forward=Tab
+key_expand=Right
+key_backward=ISO_Left_Tab
+

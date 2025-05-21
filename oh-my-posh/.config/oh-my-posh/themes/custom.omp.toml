@@ -1,0 +1,73 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[secondary_prompt]
+  template = '❯❯ '
+  foreground = '#ce93d8'
+  background = 'transparent'
+
+[transient_prompt]
+  template = '❯ '
+  background = 'transparent'
+  foreground_templates = ['{{ if gt .Code 0 }}#c7363f{{ end }}', '{{ if eq .Code 0 }}#ce93d8{{ end }}']
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = ' {{ .Path }} '
+    foreground = '#4db6ac'
+    background = '#0e0b10'
+    type = 'path'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'full'
+
+  [[blocks.segments]]
+    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} {{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }} '
+    foreground = '#7e57c2'
+    background = '#18131e'
+    type = 'git'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      branch_icon = ''
+      cache_duration = 'none'
+      commit_icon = '@'
+      fetch_status = true
+
+[[blocks]]
+  type = 'rprompt'
+  overflow = 'hidden'
+
+  [[blocks.segments]]
+    template = ' {{ .FormattedMs }} '
+    foreground = '#ffb74d'
+    background = '#221a28'
+    type = 'executiontime'
+    style = 'powerline'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'austin'
+      threshold = 5000
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '❯'
+    background = 'transparent'
+    type = 'text'
+    style = 'plain'
+    foreground_templates = ['{{ if gt .Code 0 }}#c7363f{{ end }}', '{{ if eq .Code 0 }}#ce93d8{{ end }}']
+
+    [blocks.segments.properties]
+      cache_duration = 'none'

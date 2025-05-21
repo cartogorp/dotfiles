@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "path",
+          "style": "plain",
+          "background": "transparent",
+          "foreground": "#4db6ac",
+          "template": "{{ .Path }}",
+          "properties": {
+            "style": "full"
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#7e57c2",
+          "background": "transparent",
+          "template": " {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} {{ if gt .Behind 0 }}<#80cbc4>⇣</>{{ end }}{{ if gt .Ahead 0 }}<#80cbc4>⇡</>{{ end }}",
+          "properties": {
+            "branch_icon": "",
+            "commit_icon": "@",
+            "fetch_status": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "rprompt",
+      "overflow": "hidden",
+      "segments": [
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "#ffb74d",
+          "background": "transparent",
+          "template": "{{ .FormattedMs }}",
+          "properties": {
+            "threshold": 5000
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "background": "transparent",
+          "template": "❯",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#c7363f{{ end }}",
+            "{{ if eq .Code 0 }}#ce93d8{{ end }}"
+          ]
+        }
+      ]
+    }
+  ],
+  "transient_prompt": {
+    "background": "transparent",
+    "template": "❯ ",
+    "foreground_templates": [
+      "{{ if gt .Code 0 }}#c7363f{{ end }}",
+      "{{ if eq .Code 0 }}#ce93d8{{ end }}"
+    ]
+  },
+  "secondary_prompt": {
+    "background": "transparent",
+    "foreground": "#ce93d8",
+    "template": "❯❯ "
+  }
+}
