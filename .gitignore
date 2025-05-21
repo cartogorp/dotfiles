@@ -1,0 +1,35 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore swap and backup files from editors
+*.swp
+*.swo
+*.bak
+*.orig
+
+# Ignore any logs
+*.log
+
+# Ignore compiled Python files if any
+__pycache__/
+*.pyc
+
+# Ignore secret files or API keys (if you have any)
+*.secret
+*.key
+*.pem
+
+# Ignore local machine-specific config overrides (if you have any)
+local.lua
+*.local
+
+# Ignore cache or temporary folders you don’t want tracked
+.cache/
+node_modules/
+
+# Ignore lazy.nvim lock files if you don't want to track them
+lazy-lock.json
+
+# Ignore any other build or temporary artifacts specific to your setup
+
