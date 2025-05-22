@@ -1,0 +1,9 @@
+// Generated Zellij theme.kdl
+theme {
+  a0 "#4cb5ab"
+  a10 "#41948c"
+  a20 "#37756f"
+  a30 "#2c5752"
+  a40 "#203b38"
+  a50 "#15201f"
+}
