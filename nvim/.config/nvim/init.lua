@@ -1,23 +1,16 @@
-require("core.lazy")
-  print("Installing lazy.nvim...")
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-  })
-end
+-- Set leader keys first
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- setup lazy.nvim with minimal plugins
+require("core.lazy")
 
 -- Basic options
-vim.o.number = true -- show line numbers
-vim.o.relativenumber = true -- relative line numbers
-vim.o.expandtab = true -- use spaces instead of tabs
-vim.o.shiftwidth = 2 -- indentation amount for < and >
-vim.o.tabstop = 2 -- number of spaces per tab
-vim.o.smartindent = true -- autoindent new lines
-vim.o.termguicolors = true -- enable 24-bit colors
-vim.cmd.colorscheme("default") -- default colorscheme
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.expandtab = true
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.smartindent = true
+vim.o.termguicolors = true
+vim.cmd.colorscheme("default")
 
