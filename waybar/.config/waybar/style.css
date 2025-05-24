@@ -3,7 +3,7 @@
     border-radius: 12px;
     font-family: "JetBrainsMono NFM", "JetBrainsMono Nerd Font Mono", monospace;
     min-height: 0;  /* Reset min-height */
-    font-size: 13px;  /* Base font size */
+    font-size: 16px;  /* Base font size matching modules */
     color: #ffffff;
     padding: 0;
 }
@@ -20,6 +20,16 @@ window#waybar {
 #backlight,
 #pulseaudio,
 #clock,
+#window {
+    background-color: rgba(24, 19, 31, 0.9);
+    padding: 3px 12px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    min-height: 28px;
+}
+
+
+/* Tray gets separate styling */
 #tray {
     background-color: rgba(24, 19, 31, 0.9);
     padding: 3px 12px;
@@ -28,26 +38,6 @@ window#waybar {
     min-height: 28px;
 }
 
-/* Window module styling */
-#window {
-    background-color: rgba(24, 19, 31, 0.9);
-    padding: 3px 12px;
-    margin: 4px 2px;
-    border-radius: 12px;
-    min-height: 28px;
-    font-size: 16px;  /* Set font size directly */
-}
-
-#window span {
-    font-size: 16px;  /* Force font size on spans */
-    margin: 0;
-    padding: 0;
-}
-
-#window span:first-child {
-    font-size: 19px;  /* Force icon size */
-    padding-right: 3px;
-}
 
 /* Workspace specific */
 #workspaces {
@@ -56,7 +46,7 @@ window#waybar {
     margin: 4px;
     border-radius: 12px;
     min-height: 28px;
-    font-size: 13px;
+    font-size: 13px;  /* Keep workspaces at smaller size */
 }
 
 #workspaces button {
@@ -104,17 +94,6 @@ label {
 
 
 
-/* Module text styling */
-#battery,
-#cpu,
-#memory,
-#network,
-#backlight,
-#pulseaudio,
-#clock {
-    font-size: 16px;
-}
-
 /* Icon and text spacing */
 #battery span,
 #cpu span,
@@ -122,7 +101,8 @@ label {
 #network span,
 #backlight span,
 #pulseaudio span,
-#clock span {
+#clock span,
+#window span {
     margin: 0;
     padding: 0;  /* Remove the 2px padding, we'll control spacing differently */
 }
@@ -134,11 +114,11 @@ label {
 #network span:first-child,
 #backlight span:first-child,
 #pulseaudio span:first-child,
-#clock span:first-child {
+#clock span:first-child,
+#window span:first-child {
     font-size: 19px;  /* Removed !important */
     padding-right: 3px;  /* Add specific spacing after icons */
 }
-
 
 /* Override for smaller icons */
 #tray image {
