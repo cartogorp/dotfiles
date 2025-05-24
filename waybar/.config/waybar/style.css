@@ -3,7 +3,7 @@
     border-radius: 12px;
     font-family: "JetBrainsMono NFM", "JetBrainsMono Nerd Font Mono", monospace;
     min-height: 0;  /* Reset min-height */
-    font-size: 16px;  /* Base font size matching modules */
+    font-size: 13px;  /* Base font size for text */
     color: #ffffff;
     padding: 0;
 }
@@ -21,32 +21,31 @@ window#waybar {
 #pulseaudio,
 #clock,
 #window {
-    background-color: rgba(43, 37, 52, 0.75);  /* Lighter and more transparent */
-    padding: 3px 12px;
-    margin: 2px 2px;  /* Reduced top/bottom from 4px to 2px */
+    background-color: rgba(38, 32, 47, 0.60);  /* Darker and less transparent */
+    padding: 0px 12px;
+    margin: 0 2px;  /* No vertical margin */
     border-radius: 12px;
-    min-height: 28px;
+    min-height: 11px;  /* slightly less than font size */
+
 }
-
-
 /* Tray gets separate styling */
 #tray {
-    background-color: rgba(43, 37, 52, 0.75);
-    padding: 3px 12px;
-    margin: 2px 2px;
+    background-color: rgba(38, 32, 47, 0.85);
+    padding: 4px 12px;
+    margin: 0 2px;
     border-radius: 12px;
-    min-height: 28px;
+    min-height: 18px;  /* reduced from 24px */
 }
 
 
 /* Workspace specific */
 #workspaces {
-    background-color: rgba(43, 37, 52, 0.75);
-    padding: 0 6px;
-    margin: 2px;
+    background-color: rgba(38, 32, 47, 0.85);
+    padding: 4px 6px;
+    margin: 0 2px;
     border-radius: 12px;
-    min-height: 28px;
-    font-size: 13px;  /* Keep workspaces at smaller size */
+    min-height: 18px;  /* reduced from 24px */
+    font-size: 13px;  /* Match base font size */
 }
 
 #workspaces button {
@@ -73,13 +72,13 @@ window#waybar {
 }
 
 
-/* Tray styling */
-#tray {
-    padding: 0 8px;
+/* Tray styling - additional styles */
+#tray > * {
+    padding: 0 2px;
 }
 
 #tray menu {
-    background-color: rgba(43, 37, 52, 0.75);
+    background-color: rgba(38, 32, 47, 0.85);
     border-radius: 12px;
     border: 1px solid rgba(126, 87, 194, 0.3);
 }
@@ -116,7 +115,7 @@ label {
 #pulseaudio span:first-child,
 #clock span:first-child,
 #window span:first-child {
-    font-size: 19px;  /* Removed !important */
+    font-size: 16px;  /* Slightly larger than text */
     padding-right: 3px;  /* Add specific spacing after icons */
 }
 
@@ -162,7 +161,7 @@ label {
 
 /* Tooltip styling */
 tooltip {
-    background: rgba(43, 37, 52, 0.65);  /* Tooltip slightly more transparent */
+    background: rgba(38, 32, 47, 0.95);  /* Tooltip even more opaque */
     border: 1px solid rgba(126, 87, 194, 0.3);
     border-radius: 8px;
 }
