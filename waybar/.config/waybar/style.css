@@ -1,0 +1,199 @@
+* {
+    border: none;
+    border-radius: 12px;
+    font-family: "JetBrainsMono NFM", "JetBrainsMono Nerd Font Mono", monospace;
+    min-height: 0;  /* Reset min-height */
+    font-size: 13px;  /* Base font size */
+    color: #ffffff;
+    padding: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+/* General module styling */
+#battery,
+#cpu,
+#memory,
+#network,
+#backlight,
+#pulseaudio,
+#clock,
+#tray {
+    background-color: rgba(24, 19, 31, 0.9);
+    padding: 3px 12px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    min-height: 28px;
+}
+
+/* Window module styling */
+#window {
+    background-color: rgba(24, 19, 31, 0.9);
+    padding: 3px 12px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    min-height: 28px;
+    font-size: 16px;  /* Set font size directly */
+}
+
+#window span {
+    font-size: 16px;  /* Force font size on spans */
+    margin: 0;
+    padding: 0;
+}
+
+#window span:first-child {
+    font-size: 19px;  /* Force icon size */
+    padding-right: 3px;
+}
+
+/* Workspace specific */
+#workspaces {
+    background-color: rgba(24, 19, 31, 0.9);
+    padding: 0 6px;
+    margin: 4px;
+    border-radius: 12px;
+    min-height: 28px;
+    font-size: 13px;
+}
+
+#workspaces button {
+    padding: 0;
+    margin: 0 2px;
+    background: transparent;
+    color: #c6c6c6;
+    border-radius: 0;
+    min-width: 12px;
+}
+
+#workspaces button:hover {
+    color: #ffffff;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    background: transparent;
+}
+
+#workspaces button.urgent {
+    background-color: rgba(180, 28, 43, 0.5);
+    color: #ffffff;
+}
+
+
+/* Tray styling */
+#tray {
+    padding: 0 8px;
+}
+
+#tray menu {
+    background-color: rgba(24, 19, 31, 0.9);
+    border-radius: 12px;
+    border: 1px solid rgba(126, 87, 194, 0.3);
+}
+
+
+/* Label styling */
+label {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+/* Module text styling */
+#battery,
+#cpu,
+#memory,
+#network,
+#backlight,
+#pulseaudio,
+#clock {
+    font-size: 16px;
+}
+
+/* Icon and text spacing */
+#battery span,
+#cpu span,
+#memory span,
+#network span,
+#backlight span,
+#pulseaudio span,
+#clock span {
+    margin: 0;
+    padding: 0;  /* Remove the 2px padding, we'll control spacing differently */
+}
+
+/* Icon styling */
+#battery span:first-child,
+#cpu span:first-child,
+#memory span:first-child,
+#network span:first-child,
+#backlight span:first-child,
+#pulseaudio span:first-child,
+#clock span:first-child {
+    font-size: 19px;  /* Removed !important */
+    padding-right: 3px;  /* Add specific spacing after icons */
+}
+
+
+/* Override for smaller icons */
+#tray image {
+    margin: 0 2px;
+    padding: 0 2px;
+    min-height: 16px;
+    min-width: 16px;
+    font-size: 16px;
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+/* Keep attention states */
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: rgba(126, 87, 194, 0.4);
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+
+/* Status-specific styling */
+#battery.charging, #battery.plugged {
+    background-color: rgba(0, 159, 66, 0.4);
+}
+
+#battery.critical:not(.charging) {
+    background-color: rgba(180, 28, 43, 0.5);
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#pulseaudio.muted {
+    color: #919191;
+}
+
+/* Tooltip styling */
+tooltip {
+    background: rgba(24, 19, 31, 0.75);
+    border: 1px solid rgba(126, 87, 194, 0.3);
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #ffffff;
+    padding: 6px 12px;
+}
+
+@keyframes blink {
+    to {
+        background-color: rgba(240, 173, 78, 0.5);
+    }
+}

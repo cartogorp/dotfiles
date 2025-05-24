@@ -1,0 +1,175 @@
+* {
+    border: none;
+    border-radius: 12px;
+    font-family: "JetBrainsMono NFM", "JetBrainsMono Nerd Font Mono", monospace;
+    min-height: 0;  /* Reset min-height */
+    color: #ffffff;
+    padding: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+/* Module styling */
+#workspaces,
+#window,
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#backlight,
+#tray {
+    background-color: rgba(24, 19, 31, 0.9);
+    padding: 0 8px;
+    margin: 4px 2px;  /* Reduced from 4px 4px to 4px 2px */
+    border-radius: 12px;
+    min-height: 32px;  /* Slightly increased but still within 36px total height */
+}
+
+/* Workspace specific */
+#workspaces {
+    padding: 0 6px;
+    margin: 4px;
+}
+
+#workspaces button {
+    padding: 0;
+    margin: 0 2px;
+    background: transparent;
+    color: #c6c6c6;
+    border-radius: 0;
+    min-width: 12px;
+}
+
+#workspaces button:hover {
+    color: #ffffff;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    background: transparent;
+}
+
+#workspaces button.urgent {
+    background-color: rgba(180, 28, 43, 0.5);
+    color: #ffffff;
+}
+
+/* Special module styling */
+#window {
+    background-color: rgba(126, 87, 194, 0.4);
+    margin-left: 6px;
+}
+
+/* Tray styling */
+#tray {
+    padding: 0 8px;
+}
+
+#tray menu {
+    background-color: rgba(24, 19, 31, 0.9);
+    border-radius: 12px;
+    border: 1px solid rgba(126, 87, 194, 0.3);
+}
+
+/* Base module styling */
+#battery,
+#cpu,
+#memory,
+#network,
+#backlight,
+#pulseaudio,
+#clock {
+    font-size: 13px;
+    padding: 0 8px;
+}
+
+/* Icon styling */
+#battery span:first-child,
+#cpu span:first-child,
+#memory span:first-child,
+#network span:first-child,
+#backlight span:first-child,
+#pulseaudio span:first-child,
+#clock span:first-child {
+    font-family: "JetBrainsMono NFM";
+    font-size: 28px;
+    padding-right: 16px;  /* Increased from 10px to 16px */
+    margin-right: 4px;
+}
+
+/* Text styling */
+#battery span:last-child,
+#cpu span:last-child,
+#memory span:last-child,
+#network span:last-child,
+#backlight span:last-child,
+#pulseaudio span:last-child,
+#clock span:last-child {
+    font-size: 13px;
+    padding-left: 2px;
+}
+
+/* Override for smaller icons */
+#tray image {
+    margin: 0 2px;
+    padding: 0 2px;
+    min-height: 16px;
+    min-width: 16px;
+    font-size: 16px;
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+/* Keep attention states */
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: rgba(126, 87, 194, 0.4);
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+.module-label {
+    margin-left: 4px;
+}
+
+/* Status-specific styling */
+#battery.charging, #battery.plugged {
+    background-color: rgba(0, 159, 66, 0.4);
+}
+
+#battery.critical:not(.charging) {
+    background-color: rgba(180, 28, 43, 0.5);
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#pulseaudio.muted {
+    color: #919191;
+}
+
+/* Tooltip styling */
+tooltip {
+    background: rgba(24, 19, 31, 0.75);
+    border: 1px solid rgba(126, 87, 194, 0.3);
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #ffffff;
+    padding: 6px 12px;
+}
+
+@keyframes blink {
+    to {
+        background-color: rgba(240, 173, 78, 0.5);
+    }
+}

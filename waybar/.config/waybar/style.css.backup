@@ -1,0 +1,165 @@
+* {
+    border: none;
+    border-radius: 12px;
+    font-family: "JetBrainsMono NFM", "JetBrainsMono Nerd Font Mono", monospace;
+    font-size: 14px;
+    min-height: 0;
+    color: #ffffff;
+    padding: 0;
+}
+
+
+window#waybar {
+    background: transparent;
+}
+
+/* Module styling */
+#workspaces,
+#window,
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#backlight,
+#tray {
+    background-color: rgba(24, 19, 31, 0.9);
+    padding: 0 12px;
+    margin: 4px 2px;
+    border-radius: 12px;
+}
+
+/* Workspace specific */
+#workspaces {
+    padding: 0 6px;
+    margin: 4px;
+}
+
+#workspaces button {
+    padding: 0;
+    margin: 0 2px;
+    background: transparent;
+    color: #c6c6c6;
+    border-radius: 0;
+    min-width: 12px;
+}
+
+#workspaces button:hover {
+    color: #ffffff;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    background: transparent;
+}
+
+#workspaces button.urgent {
+    background-color: rgba(180, 28, 43, 0.5);
+    color: #ffffff;
+}
+
+/* Special module styling */
+#window {
+    background-color: rgba(126, 87, 194, 0.4);
+    margin-left: 6px;
+}
+
+/* Tray styling */
+#tray {
+    padding: 0 8px;
+}
+
+#tray menu {
+    background-color: rgba(24, 19, 31, 0.9);
+    border-radius: 12px;
+    border: 1px solid rgba(126, 87, 194, 0.3);
+}
+
+/* Icon sizing for all modules */
+
+#cpu label:first-child,
+#memory label:first-child,
+#network label:first-child,
+#backlight label:first-child,
+#pulseaudio label:first-child,
+#battery label:first-child,
+#clock label:first-child {
+    font-size: 40px !important;
+    line-height: 36px;
+    padding-right: 12px;
+    margin-top: 2px;
+}
+
+/* Text sizing for module values */
+#cpu label + label,
+#memory label + label,
+#network label + label,
+#backlight label + label,
+#pulseaudio label + label,
+#battery label + label,
+#clock label + label {
+    font-size: 14px !important;
+    padding: 0;
+}
+
+/* Override for smaller icons */
+#tray image {
+    margin: 0 2px;
+    padding: 0 2px;
+    min-height: 16px;
+    min-width: 16px;
+    font-size: 16px;
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+/* Keep attention states */
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: rgba(126, 87, 194, 0.4);
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+.module-label {
+    margin-left: 4px;
+}
+
+/* Status-specific styling */
+#battery.charging, #battery.plugged {
+    background-color: rgba(0, 159, 66, 0.4);
+}
+
+#battery.critical:not(.charging) {
+    background-color: rgba(180, 28, 43, 0.5);
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#pulseaudio.muted {
+    color: #919191;
+}
+
+/* Tooltip styling */
+tooltip {
+    background: rgba(24, 19, 31, 0.75);
+    border: 1px solid rgba(126, 87, 194, 0.3);
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #ffffff;
+    padding: 6px 12px;
+}
+
+@keyframes blink {
+    to {
+        background-color: rgba(240, 173, 78, 0.5);
+    }
+}
