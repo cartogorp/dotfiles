@@ -3,7 +3,7 @@
     "position": "top",
     "height": 42,  /* Increased from 36 to match minimum required height */
     "spacing": 4,
-    "margin-top": 3,
+    "margin-top": 2,  /* Reduced from 3 */
     "margin-left": 8,
     "margin-right": 8,
 
