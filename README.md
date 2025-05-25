@@ -43,6 +43,21 @@ The configs are organized under this directory layout for easy management and us
 
 ---
 
+## Branch Naming Conventions
+
+| Prefix                  | Purpose                           | Example                         |
+| ----------------------- | --------------------------------- | ------------------------------- |
+| `feat/`                 | New features                      | `feat/waybar-unified-modules`   |
+| `fix/`                  | Bug fixes                         | `fix/waybar-font-scaling`       |
+| `chore/`                | Non-feature, non-fix tasks        | `chore/cleanup-waybar-css`      |
+| `refactor/`             | Code/structure cleanup            | `refactor/waybar-layout`        |
+| `style/`                | Visual-only changes (CSS, themes) | `style/waybar-theme-experiment` |
+| `test/`                 | Adding or adjusting tests         | `test/dotfile-check-script`     |
+| `docs/`                 | Documentation changes             | `docs/add-waybar-readme`        |
+| `exp/`                  | Experimental ideas                | `exp/holographic-theme`         |
+
+---
+
 ## Setup Instructions
 
 1. Clone this repo:
