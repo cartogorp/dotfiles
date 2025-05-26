@@ -79,4 +79,8 @@ setopt GLOB_DOTS           # Include hidden files in glob
 setopt INTERACTIVE_COMMENTS # Allow comments in interactive shell
 
 eval $(keychain --eval ~/.ssh/thinkpad-github)
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
+alias nvim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim --listen /tmp/nvimsocket"
+
+
 

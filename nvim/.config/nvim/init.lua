@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("core.lazy")
+require("core.clipboard")
 
 -- Basic options
 vim.o.number = true
@@ -24,6 +25,14 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function()
     require("core.highlights").set_highlights()
+  end,
+})
+
+-- Enable GitHub Copilot in commit message buffers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "gitcommit",
+  callback = function()
+    vim.cmd("Copilot enable")
   end,
 })
 
