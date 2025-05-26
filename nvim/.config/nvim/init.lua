@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("core.lazy")
+require("core.clipboard")
 
 -- Basic options
 vim.o.number = true
