@@ -27,3 +27,11 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
+-- Enable GitHub Copilot in commit message buffers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "gitcommit",
+  callback = function()
+    vim.cmd("Copilot enable")
+  end,
+})
+
