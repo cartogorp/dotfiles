@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "plain",
+          "background": "#0d0d0d",
+          "foreground": "#80cbc4",
+          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+        },
+        {
+          "type": "root",
+          "style": "plain",
+          "background": "#0d0d0d",
+          "foreground": "#ff5370",
+          "template": "  "
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "background": "#0d0d0d",
+          "foreground": "#a1efe4",
+          "template": " {{ .Path }} "
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "background": "#0d0d0d",
+          "foreground": "#ffd54f",
+          "template": "<#80cbc4> </>{{ .HEAD }} "
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#0d0d0d",
+          "template": ""
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "session",
+          "style": "diamond",
+          "background": "#0d0d0d",
+          "foreground": "#ffd54f",
+          "leading_diamond": "",
+          "template": " {{ .UserName }}@{{ .HostName }} <#80cbc4></> "
+        },
+        {
+          "type": "time",
+          "style": "plain",
+          "background": "#0d0d0d",
+          "foreground": "#ffd54f",
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "template": " {{ .CurrentDate | date .Format }}  "
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground": "#aeea00",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#ff5252{{ end }}"
+          ],
+          "properties": {
+            "always_enabled": true
+          },
+          "template": "❯ "
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "version": 2
+}
+
