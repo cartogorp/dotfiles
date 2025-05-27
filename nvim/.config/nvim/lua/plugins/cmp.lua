@@ -52,6 +52,9 @@ return {
           return vim_item
         end,
       },
+      experimental = {
+        ghost_text = true, -- Show ghost text for completions
+      },
     })
   end,
 }
