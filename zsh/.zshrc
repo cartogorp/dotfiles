@@ -53,7 +53,7 @@ promptinit
 
 # Oh My Posh configuration (load after prompt system)
 if command -v oh-my-posh > /dev/null; then
-  eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/oil-slick-dark.omp.json)"  
+  eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/cartogorp-hybrid.omp.json)"  
 fi
 
 # Load vi-mode (without waiting, to ensure proper initialization)
