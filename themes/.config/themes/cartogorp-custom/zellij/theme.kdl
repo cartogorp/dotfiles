@@ -1,9 +1,78 @@
-// Generated Zellij theme.kdl
+// Generated Zellij theme.kdl - cartogorp-custom theme
 theme {
-  a0 "#4cb5ab"
-  a10 "#41948c"
-  a20 "#37756f"
-  a30 "#2c5752"
-  a40 "#203b38"
-  a50 "#15201f"
+    // Colors from cartogorp-custom.toml
+    bg "#18131f"              // surface.a0 - Main background
+    fg "#ffffff"              // text.primary - Main text
+    red "#b41c2b"             // danger.a0 - Error/danger color
+    green "#4cb5ab"           // primary.a0 - Primary brand color
+    yellow "#f0ad4e"          // warning.a0 - Warning color
+    blue "#7e57c2"            // accent.a0 - Accent color
+    magenta "#ce93d8"         // dusty_pink - Secondary accent
+    orange "#f0ad4e"          // warning.a0 - Same as yellow
+    cyan "#80cbc4"            // desaturated_mint - Additional accent
+    black "#0e0b10"           // deeper background
+    white "#c6c6c6"           // text.secondary - Secondary text
+
+    // Tab bar styling
+    tab_bar {
+        background "#18131f"  // surface.a0
+        active_tab {
+            bg_color "#37756f"     // primary.a20
+            fg_color "#ffffff"     // text.primary
+        }
+        inactive_tab {
+            bg_color "#2d2834"     // surface.a10
+            fg_color "#919191"     // text.muted
+        }
+        new_tab {
+            bg_color "#37756f"     // primary.a20
+            fg_color "#ffffff"     // text.primary
+        }
+    }
+
+    // Pane frame styling
+    pane_frames {
+        active {
+            style "Bold"
+            color "#4cb5ab"        // primary.a0
+        }
+        inactive {
+            style "Normal"
+            color "#5c5861"        // ui.border
+        }
+    }
+
+    // Command bar styling
+    command_bar {
+        background "#18131f"      // surface.a0
+        foreground "#ffffff"      // text.primary
+    }
+
+    // Status bar styling
+    status_bar {
+        background "#18131f"      // surface.a0
+        foreground "#919191"      // text.muted
+    }
+
+    // Selection styling
+    selection {
+        background "#41948c"      // ui.selection (primary.a10)
+        foreground "#ffffff"      // text.primary
+    }
+
+    // Mode indicator styling
+    mode_indicator {
+        normal {
+            bg_color "#37756f"    // primary.a20
+            fg_color "#ffffff"    // text.primary
+        }
+        select {
+            bg_color "#7e57c2"    // accent.a0
+            fg_color "#ffffff"    // text.primary
+        }
+        locked {
+            bg_color "#b41c2b"    // danger.a0
+            fg_color "#ffffff"    // text.primary
+        }
+    }
 }
