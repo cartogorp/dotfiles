@@ -1,0 +1,1 @@
+../../../../themes/.config/themes/cartogorp-custom/ranger/colorschemes/cartogorp-custom.py
