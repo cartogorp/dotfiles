@@ -80,7 +80,19 @@ setopt INTERACTIVE_COMMENTS # Allow comments in interactive shell
 
 eval $(keychain --eval ~/.ssh/thinkpad-github)
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
-alias nvim="NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim --listen /tmp/nvimsocket"
 
+# Remove any existing nvim alias
+unalias nvim 2>/dev/null || true
 
+# Function to launch Neovim in Kitty when not already in Kitty
+function nvim {
+  # Check if we're already in Kitty
+  if [[ -n "$KITTY_WINDOW_ID" || "$TERM" == "xterm-kitty" ]]; then
+    # If in Kitty, just run nvim normally
+    NVIM_LISTEN_ADDRESS=/tmp/nvimsocket command nvim --listen /tmp/nvimsocket "$@"
+  else
+    # If not in Kitty, launch Kitty with nvim as the command
+    kitty -e zsh -c "NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim --listen /tmp/nvimsocket \"$@\"" &
+  fi
+}
 

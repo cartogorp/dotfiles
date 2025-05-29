@@ -1,47 +1,47 @@
-local palette = require("core.palette")
+local palette = require("themes.cartogorp-custom.nvim.palette")
 
 local function set_highlights()
   local hl = vim.api.nvim_set_hl
   local p = palette
 
   -- Universal base groups
-  hl(0, "Normal",         { fg = p.desaturated_mint, bg = p.background })
-  hl(0, "NormalNC",       { fg = p.desaturated_mint, bg = p.background })
-  hl(0, "Comment",        { fg = p.muted_teal, italic = true })
-  hl(0, "LineNr",         { fg = p.muted_teal })
-  hl(0, "CursorLineNr",   { fg = p.washed_amber, bold = true })
-  hl(0, "CursorLine",     { bg = p.surface })
-  hl(0, "Visual",         { bg = p.overlay })
-  hl(0, "StatusLine",     { fg = p.background, bg = p.dusty_pink, bold = true })
-  hl(0, "VertSplit",      { fg = p.overlay })
+  hl(0, "Normal",         { fg = p.primary_a0, bg = p.neutral_a50 })
+  hl(0, "NormalNC",       { fg = p.primary_a0, bg = p.neutral_a50 })
+  hl(0, "Comment",        { fg = p.primary_a10, italic = true })
+  hl(0, "LineNr",         { fg = p.primary_a10 })
+  hl(0, "CursorLineNr",   { fg = p.primary_a0, bold = true })
+  hl(0, "CursorLine",     { bg = p.neutral_a40 })
+  hl(0, "Visual",         { bg = p.neutral_a30 })
+  hl(0, "StatusLine",     { fg = p.neutral_a50, bg = p.primary_a10, bold = true })
+  hl(0, "VertSplit",      { fg = p.neutral_a30 })
 
   -- Floating windows
-  hl(0, "NormalFloat",    { bg = p.background })
-  hl(0, "FloatBorder",    { fg = p.muted_teal, bg = p.background })
+  hl(0, "NormalFloat",    { bg = p.neutral_a50 })
+  hl(0, "FloatBorder",    { fg = p.primary_a10, bg = p.neutral_a50 })
 
   -- Popup / Menu
-  hl(0, "Pmenu",          { fg = p.desaturated_mint, bg = p.overlay })
-  hl(0, "PmenuSel",       { fg = p.background, bg = p.dusty_pink, bold = true })
+  hl(0, "Pmenu",          { fg = p.primary_a0, bg = p.neutral_a30 })
+  hl(0, "PmenuSel",       { fg = p.neutral_a50, bg = p.primary_a10, bold = true })
 
   -- Telescope
-  hl(0, "TelescopeNormal",     { fg = p.desaturated_mint, bg = p.surface })
-  hl(0, "TelescopeSelection",  { fg = p.background, bg = p.washed_amber, bold = true })
-  hl(0, "TelescopeMatching",   { fg = p.dusty_pink, bold = true })
-  hl(0, "TelescopeBorder",     { fg = p.muted_violet, bg = p.background })
+  hl(0, "TelescopeNormal",     { fg = p.primary_a0, bg = p.neutral_a40 })
+  hl(0, "TelescopeSelection",  { fg = p.neutral_a50, bg = p.primary_a0, bold = true })
+  hl(0, "TelescopeMatching",   { fg = p.primary_a10, bold = true })
+  hl(0, "TelescopeBorder",     { fg = p.primary_a20, bg = p.neutral_a50 })
 
   -- Neo-tree
-  hl(0, "NeoTreeNormal",         { fg = p.desaturated_mint, bg = p.background })
-  hl(0, "NeoTreeCursorLine",     { bg = p.surface })
-  hl(0, "NeoTreeFileNameHidden", { fg = p.muted_teal, italic = true })
+  hl(0, "NeoTreeNormal",         { fg = p.primary_a0, bg = p.neutral_a50 })
+  hl(0, "NeoTreeCursorLine",     { bg = p.neutral_a40 })
+  hl(0, "NeoTreeFileNameHidden", { fg = p.primary_a10, italic = true })
 
   -- Diagnostics & Git
-  hl(0, "DiagnosticError",       { fg = p.accent_red })
-  hl(0, "DiagnosticWarn",        { fg = p.washed_amber })
-  hl(0, "DiagnosticInfo",        { fg = p.indigo_fog })
-  hl(0, "DiagnosticHint",        { fg = p.muted_teal })
-  hl(0, "GitSignsAdd",           { fg = p.muted_teal })
-  hl(0, "GitSignsChange",        { fg = p.washed_amber })
-  hl(0, "GitSignsDelete",        { fg = p.accent_red })
+  hl(0, "DiagnosticError",       { fg = p.primary_a0 })  -- No direct accent_red equivalent
+  hl(0, "DiagnosticWarn",        { fg = p.primary_a0 })
+  hl(0, "DiagnosticInfo",        { fg = p.primary_a20 })
+  hl(0, "DiagnosticHint",        { fg = p.primary_a10 })
+  hl(0, "GitSignsAdd",           { fg = p.primary_a10 })
+  hl(0, "GitSignsChange",        { fg = p.primary_a0 })
+  hl(0, "GitSignsDelete",        { fg = p.primary_a0 })  -- No direct accent_red equivalent
 end
 
 return {
