@@ -262,7 +262,7 @@ env {
     TERM "xterm-256color"
     LANG "en_US.UTF-8"
     LC_ALL "en_US.UTF-8"
-    POSH_THEME "~/.config/themes/cartogorp-custom/oh-my-posh/cartogorp-hybrid.omp.json"
+    POSH_THEME "/home/cartogorp/.config/themes/cartogorp-custom/oh-my-posh/cartogorp-hybrid.omp.json"
 }
 
 // Plugins to load in the background when a new session starts
@@ -281,7 +281,7 @@ simplified_ui false
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme_file "~/.config/themes/cartogorp-custom/zellij/theme.kdl"
+theme_file "/home/cartogorp/.config/themes/cartogorp-custom/zellij/theme.kdl"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -291,7 +291,7 @@ default_mode "normal"
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 // 
-default_shell "zsh -l -c 'eval \"$(oh-my-posh init zsh --config ~/.config/themes/cartogorp-custom/oh-my-posh/cartogorp-hybrid.omp.json)\" && exec zsh -l'"
+default_shell "zsh"
  
 // Choose the path to override cwd that zellij will use for opening new panes
 // 
@@ -310,7 +310,7 @@ default_layout "default"
 // The folder in which Zellij will look for themes
 // (Requires restart)
 // 
-theme_dir "~/.config/themes"
+theme_dir "/home/cartogorp/.config/themes"
  
 // Toggle enabling the mouse mode.
 // On certain configurations, or terminals this could
