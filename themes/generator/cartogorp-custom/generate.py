@@ -1,6 +1,5 @@
 import toml
 import os
-import shutil
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, TemplateError
 
@@ -11,6 +10,16 @@ palette_file = base_path / f"{theme_name}.toml"
 template_dir = base_path / "templates"
 output_root = base_path / "generated"
 dotfiles_root = Path.home() / ".dotfiles/themes/.config/themes" / theme_name
+
+# Map app names to desired output filenames (with extensions)
+apps = {
+    "kitty": "theme.conf",
+    "waybar": "style.css",
+    "zellij": "theme.kdl",
+    "wofi": "style.css",
+    "ranger": "colorscheme",
+    # add more apps and their output files here
+}
 
 # === Prepare environment ===
 output_root.mkdir(parents=True, exist_ok=True)
@@ -27,45 +36,45 @@ env = Environment(loader=FileSystemLoader(template_dir))
 successes = []
 errors = []
 
-# === Process each app ===
-for app_dir in template_dir.iterdir():
-    if not app_dir.is_dir():
-        continue
-
-    app_name = app_dir.name
+for app, out_filename in apps.items():
     try:
-        # Create output and target directories
-        output_dir = output_root / app_name
-        output_dir.mkdir(parents=True, exist_ok=True)
+        # Compose template filename based on app and output extension
+        ext = out_filename.split('.')[-1]  # e.g. 'conf', 'css', 'kdl'
+        template_name = f"{app}/{app}.{ext}.j2"  # e.g. kitty/kitty.conf.j2
 
-        target_dir = dotfiles_root / app_name
+        # Load and render template
+        template = env.get_template(template_name)
+        rendered = template.render(**palette)
+
+        # Ensure output directory exists
+        app_output_dir = output_root / app
+        app_output_dir.mkdir(parents=True, exist_ok=True)
+        output_file = app_output_dir / out_filename
+
+        # Write rendered output
+        with open(output_file, "w") as f:
+            f.write(rendered)
+
+        # Prepare symlink target directory
+        target_dir = dotfiles_root / app
         target_dir.mkdir(parents=True, exist_ok=True)
+        symlink_path = target_dir / out_filename
 
-        # Process each template file
-        for template_path in app_dir.glob("*.j2"):
-            template_name = template_path.name
-            output_name = template_name.replace(".j2", "")
-            output_file = output_dir / output_name
-            target_link = target_dir / output_name
+        # Remove existing symlink/file and create new symlink
+        if symlink_path.exists() or symlink_path.is_symlink():
+            symlink_path.unlink()
+        symlink_path.symlink_to(output_file.resolve())
 
-            try:
-                template = env.get_template(f"{app_name}/{template_name}")
-                rendered = template.render(**palette)
-                with open(output_file, "w") as f:
-                    f.write(rendered)
+        successes.append(f"{app}/{out_filename}")
 
-                # Create or update symlink
-                if target_link.exists() or target_link.is_symlink():
-                    target_link.unlink()
-                target_link.symlink_to(output_file.resolve())
+        print(f"[✓] Generated & linked {app}/{out_filename}")
 
-                successes.append(f"{app_name}/{output_name}")
-            except TemplateError as te:
-                errors.append(f"{app_name}/{template_name}: Jinja2 error: {te}")
-            except Exception as e:
-                errors.append(f"{app_name}/{template_name}: Render error: {e}")
+    except TemplateError as te:
+        errors.append(f"{app}: Jinja2 template error: {te}")
+    except FileNotFoundError:
+        errors.append(f"{app}: Template file not found: {template_name}")
     except Exception as e:
-        errors.append(f"{app_name}: Setup error: {e}")
+        errors.append(f"{app}: Error during generation or symlink: {e}")
 
 # === Summary ===
 print("\n✅ Theme generation complete.")
