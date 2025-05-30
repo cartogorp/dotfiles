@@ -14,11 +14,15 @@ vim.o.tabstop = 2
 vim.o.smartindent = true
 vim.o.termguicolors = true
 
--- Set your colorscheme (this will be overridden by LazyVim if using themes)
-vim.cmd.colorscheme("default")
-
--- Load your custom highlight overrides
-require("core.highlights").set_highlights()
+-- Load your custom highlight overrides after plugins/colorscheme are loaded
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    -- Wait a bit to ensure colorscheme has been applied by plugins
+    vim.defer_fn(function()
+      require("core.highlights").set_highlights()
+    end, 100)
+  end,
+})
 
 -- Reapply them if a plugin/theme changes the colorscheme
 vim.api.nvim_create_autocmd("ColorScheme", {
