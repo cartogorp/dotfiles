@@ -79,3 +79,8 @@ focus_ring = "#37756f"  # primary.a20
 selection = "#41948c"   # primary.a10
 hover = "#443f4a"       # surface.a20
 
+[extra]
+green = "#98c379"
+yellow = "#d19a66"
+blue = "#61afef"
+
