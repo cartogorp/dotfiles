@@ -10,7 +10,7 @@ line_wrap=off
 dynamic_lines=true
 
 # Theme (style) file path
-style=~/.config/themes/cartogorp-custom/wofi/style.css
+style=/home/cartogorp/.config/themes/cartogorp-custom/wofi/style.css
 
 # Functionality
 show=drun
