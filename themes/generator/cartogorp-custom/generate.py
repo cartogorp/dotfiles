@@ -44,8 +44,8 @@ for app, out_filename in apps.items():
 
         # Load and render template
         template = env.get_template(template_name)
-        rendered = template.render(**palette)
-
+        rendered = template.render(colours=palette)
+    
         # Ensure output directory exists
         app_output_dir = output_root / app
         app_output_dir.mkdir(parents=True, exist_ok=True)
