@@ -58,7 +58,7 @@ return {
     -- Get filename with icon
     local filename = {
       'filename',
-      icon = '',
+      icon = '󰉋',
       path = 1, -- Show relative path
       symbols = {
         modified = ' ●',
