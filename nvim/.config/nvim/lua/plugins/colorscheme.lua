@@ -10,7 +10,7 @@ package.path = package.path
 local ok, palette = pcall(require, "themes.cartogorp-custom.nvim.palette")
 if not ok then
   vim.notify("Failed to load theme palette", vim.log.levels.ERROR)
-  return
+  return {}
 end
 
 return {
