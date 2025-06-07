@@ -1,60 +1,61 @@
--- Colorscheme configuration for Neovim
--- Matching kitty and oh-my-posh themes
+-- ~/.config/nvim/lua/plugins/colorscheme.lua
+
+-- Ensure Lua can find your theme palette
+local theme_path = vim.fn.expand("~/.dotfiles/themes/.config")
+package.path = package.path
+  .. ";" .. theme_path .. "/?/init.lua"
+  .. ";" .. theme_path .. "/?.lua"
+
+-- Load generated theme palette
+local ok, palette = pcall(require, "themes.cartogorp-custom.nvim.palette")
+if not ok then
+  vim.notify("Failed to load theme palette", vim.log.levels.ERROR)
+  return
+end
 
 return {
-  -- Use catppuccin as the base theme engine with custom colors
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    priority = 1000, -- Load before other plugins
-    lazy = false,    -- Load during startup
-    event = "VimEnter", -- Load on startup
-    
+    priority = 1000,
+    lazy = false,
     opts = {
-      -- Set the main flavor
-      flavour = "mocha", -- Base flavor to customize
-      
-      -- Override palette colors with our own
+      flavour = "mocha",
       color_overrides = {
         mocha = {
-          -- Match the kitty theme colors
-          base      = "#18131e", -- Background
-          mantle    = "#26202f", -- Secondary background
-          surface0  = "#383145", -- Slightly lighter background (color8 from kitty)
-          surface1  = "#383145", -- UI elements background
-          surface2  = "#5e5e5e", -- UI elements hover
-          text      = "#e3e3e3", -- Foreground
-          subtext0  = "#c6c6c6", -- Subtle text
-          subtext1  = "#e3e3e3", -- Less subtle text
-          overlay0  = "#6c6c6c", -- Overlay text
-          overlay1  = "#8f8f8f", -- Overlay text hover
-          overlay2  = "#c6c6c6", -- Overlay text active
-          
-          -- Primary colors from kitty
-          red       = "#c7363f", -- Red/Accent
-          green     = "#98c379", -- Green from kitty
-          yellow    = "#ffb74d", -- Yellow
-          blue      = "#5c6bc0", -- Blue
-          mauve     = "#ce93d8", -- Magenta
-          lavender  = "#ce93d8", -- Light purple
-          teal      = "#4db6ac", -- Darker cyan
-          sapphire  = "#61afef", -- Light blue
-          sky       = "#6496a9", -- Cyan/blue
-          peach     = "#d19a66", -- Orange
-          maroon    = "#c7363f", -- Darker red
-          pink      = "#ce93d8", -- Light magenta
-          flamingo  = "#c7363f", -- Light red
-          rosewater = "#c7363f", -- Very light red
-          crust     = "#15201f", -- Darkest background
+          base     = palette.surface.a0,
+          mantle   = palette.tonal_surface.a10,
+          crust    = palette.primary.a50,
+          surface0 = palette.surface.a10,
+          surface1 = palette.surface.a20,
+          surface2 = palette.surface.a30,
+          text     = palette.text.primary,
+          subtext0 = palette.text.secondary,
+          subtext1 = palette.text.primary,
+          overlay0 = palette.neutral.a20,
+          overlay1 = palette.neutral.a30,
+          overlay2 = palette.neutral.a10,
+
+          red      = palette.danger.a0,
+          green    = palette.success.a0,
+          yellow   = palette.warning.a0,
+          blue     = palette.info.a0,
+          mauve    = palette.accent.a0,
+          lavender = palette.accent.a0,
+          teal     = palette.primary.a10,
+          sapphire = palette.extra.blue,
+          sky      = palette.primary.a0,
+          peach    = palette.extra.yellow,
+          maroon   = palette.danger.a10,
+          pink     = palette.accent.a20,
+          flamingo = palette.danger.a0,
+          rosewater= palette.danger.a0,
         },
       },
-      
-      -- Integration settings
       integrations = {
         cmp = true,
         gitsigns = true,
         nvimtree = true,
-        neotree = true,
         telescope = true,
         treesitter = true,
         which_key = true,
@@ -75,95 +76,25 @@ return {
         },
       },
     },
-    
-    -- Set up the colorscheme after loading
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      
-      -- Force the colorscheme to apply immediately
-      vim.schedule(function()
-        vim.cmd.colorscheme("catppuccin")
-      end)
-      
-      -- Apply custom highlight overrides
-      -- This ensures consistency with core.highlights
+      vim.cmd.colorscheme("catppuccin")
+
       vim.api.nvim_create_autocmd("ColorScheme", {
         pattern = "*",
         callback = function()
           local hl = vim.api.nvim_set_hl
-          
-          -- Ensure Lazy.nvim UI uses our theme colors
-          hl(0, "LazyNormal", { bg = "#18131e", fg = "#e3e3e3" })
-          hl(0, "LazyButton", { bg = "#26202f", fg = "#e3e3e3" })
-          hl(0, "LazyButtonActive", { bg = "#c7363f", fg = "#18131e", bold = true })
-          
-          -- Ensure terminal colors match kitty
-          vim.g.terminal_color_0 = "#18131e"  -- Black
-          vim.g.terminal_color_1 = "#c7363f"  -- Red
-          vim.g.terminal_color_2 = "#98c379"  -- Green
-          vim.g.terminal_color_3 = "#d19a66"  -- Yellow
-          vim.g.terminal_color_4 = "#61afef"  -- Blue
-          vim.g.terminal_color_5 = "#95669d"  -- Magenta
-          vim.g.terminal_color_6 = "#6496a9"  -- Cyan
-          vim.g.terminal_color_7 = "#e3e3e3"  -- White
-          vim.g.terminal_color_8 = "#383145"  -- Bright Black
-          vim.g.terminal_color_9 = "#c7363f"  -- Bright Red
-          vim.g.terminal_color_10 = "#98c379" -- Bright Green
-          vim.g.terminal_color_11 = "#d19a66" -- Bright Yellow
-          vim.g.terminal_color_12 = "#61afef" -- Bright Blue
-          vim.g.terminal_color_13 = "#95669d" -- Bright Magenta
-          vim.g.terminal_color_14 = "#6496a9" -- Bright Cyan
-          vim.g.terminal_color_15 = "#e3e3e3" -- Bright White
+          hl(0, "LazyNormal", { bg = palette.surface.a0, fg = palette.text.primary })
+          hl(0, "LazyButton", { bg = palette.tonal_surface.a10, fg = palette.text.primary })
+          hl(0, "LazyButtonActive", { bg = palette.danger.a0, fg = palette.surface.a0, bold = true })
+
+          -- Apply terminal colors from extra or fallback
+          for i = 0, 15 do
+            vim.g["terminal_color_" .. i] = palette.extra[i] or palette.text.primary
+          end
         end,
       })
-      
-      -- Set up terminal colors immediately
-      vim.g.terminal_color_0 = "#18131e"  -- Black
-      vim.g.terminal_color_1 = "#c7363f"  -- Red
-      vim.g.terminal_color_2 = "#98c379"  -- Green
-      vim.g.terminal_color_3 = "#d19a66"  -- Yellow
-      vim.g.terminal_color_4 = "#61afef"  -- Blue
-      vim.g.terminal_color_5 = "#95669d"  -- Magenta
-      vim.g.terminal_color_6 = "#6496a9"  -- Cyan
-      vim.g.terminal_color_7 = "#e3e3e3"  -- White
-      vim.g.terminal_color_8 = "#383145"  -- Bright Black
-      vim.g.terminal_color_9 = "#c7363f"  -- Bright Red
-      vim.g.terminal_color_10 = "#98c379" -- Bright Green
-      vim.g.terminal_color_11 = "#d19a66" -- Bright Yellow
-      vim.g.terminal_color_12 = "#61afef" -- Bright Blue
-      vim.g.terminal_color_13 = "#95669d" -- Bright Magenta
-      vim.g.terminal_color_14 = "#6496a9" -- Bright Cyan
-      vim.g.terminal_color_15 = "#e3e3e3" -- Bright White
     end,
-  },
-  
-  -- Set up tokyonight as a fallback (already has good defaults)
-  {
-    "folke/tokyonight.nvim",
-    priority = 900,
-    lazy = true,
-    enabled = false, -- Disable by default, enable if catppuccin fails
-    opts = {
-      style = "night",
-      on_colors = function(colors)
-        -- Override tokyonight colors to match our theme
-        colors.bg = "#18131e"
-        colors.bg_dark = "#15201f"
-        colors.bg_float = "#26202f"
-        colors.bg_highlight = "#383145"
-        colors.bg_popup = "#26202f"
-        colors.bg_sidebar = "#18131e"
-        colors.fg = "#e3e3e3"
-        colors.red = "#c7363f"
-        colors.blue = "#5c6bc0"
-        colors.yellow = "#ffb74d"
-        colors.orange = "#d19a66"
-        colors.green = "#98c379"
-        colors.purple = "#ce93d8"
-        colors.cyan = "#80cbc4"
-        colors.comment = "#6c6c6c"
-      end,
-    },
   },
 }
 

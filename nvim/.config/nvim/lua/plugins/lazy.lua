@@ -22,8 +22,14 @@ for _, file in ipairs(files) do
   local name = file:match("([^/\\]+)%.lua$")
   if name and name ~= "init" then
     local ok, plugin = pcall(require, "plugins." .. name)
-    if ok then
-      table.insert(plugins, plugin)
+    if ok and plugin then
+      if type(plugin) == "table" and plugin[1] then
+        -- Handle multiple plugins returned as an array
+        vim.list_extend(plugins, plugin)
+      else
+        -- Single plugin
+        table.insert(plugins, plugin)
+      end
     else
       vim.notify("Failed to load plugin: " .. name, vim.log.levels.WARN)
     end
@@ -31,3 +37,4 @@ for _, file in ipairs(files) do
 end
 
 require("lazy").setup(plugins)
+
