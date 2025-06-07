@@ -1,4 +1,10 @@
-local palette = require("themes.cartogorp-custom.nvim.palette")
+local ok, palette = pcall(require, "themes.cartogorp-custom.nvim.palette")
+if not ok then
+  vim.notify("❌ Failed to load theme palette in highlights.lua", vim.log.levels.ERROR)
+  return {
+    set_highlights = function() end,
+  }
+end
 
 local function set_highlights()
   local hl = vim.api.nvim_set_hl
@@ -35,13 +41,13 @@ local function set_highlights()
   hl(0, "NeoTreeFileNameHidden", { fg = p.primary_a10, italic = true })
 
   -- Diagnostics & Git
-  hl(0, "DiagnosticError",       { fg = p.primary_a0 })  -- No direct accent_red equivalent
+  hl(0, "DiagnosticError",       { fg = p.primary_a0 })  -- Substitute for red
   hl(0, "DiagnosticWarn",        { fg = p.primary_a0 })
   hl(0, "DiagnosticInfo",        { fg = p.primary_a20 })
   hl(0, "DiagnosticHint",        { fg = p.primary_a10 })
   hl(0, "GitSignsAdd",           { fg = p.primary_a10 })
   hl(0, "GitSignsChange",        { fg = p.primary_a0 })
-  hl(0, "GitSignsDelete",        { fg = p.primary_a0 })  -- No direct accent_red equivalent
+  hl(0, "GitSignsDelete",        { fg = p.primary_a0 })
 end
 
 return {

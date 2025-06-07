@@ -18,6 +18,7 @@ apps = {
     "zellij": "theme.kdl",
     "wofi": "style.css",
     "ranger": "colorscheme",
+    "nvim": "palette.lua",
     # add more apps and their output files here
 }
 
