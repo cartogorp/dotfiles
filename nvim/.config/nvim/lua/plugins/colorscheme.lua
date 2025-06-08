@@ -1,10 +1,10 @@
 -- ~/.config/nvim/lua/plugins/colorscheme.lua
 
 -- Ensure Lua can find your theme palette
-local theme_path = vim.fn.expand("config")
+local theme_path = vim.fn.stdpath("config"):gsub("/nvim$", "")
 package.path = package.path
-  .. ";" .. theme_path .. "/?/init.lua"
-  .. ";" .. theme_path .. "/?.lua"
+    .. ";" .. theme_path .. "/?.lua"
+    .. ";" .. theme_path .. "/?/init.lua"
 
 -- Load generated theme palette
 local ok, palette = pcall(require, "themes.cartogorp-custom.nvim.palette")
