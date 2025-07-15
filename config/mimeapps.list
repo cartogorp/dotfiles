@@ -1,3 +1,11 @@
 [Default Applications]
 application/pdf=org.gnome.Evince.desktop
 inode/directory=org.kde.dolphin.desktop
+image/jpeg=gthumb.desktop
+image/png=gthumb.desktop
+image/gif=gthumb.desktop
+image/bmp=gthumb.desktop
+image/tiff=gthumb.desktop
+image/webp=gthumb.desktop
+image/svg+xml=gthumb.desktop
+image/x-ms-bmp=gthumb.desktop
