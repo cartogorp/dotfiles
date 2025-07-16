@@ -9,7 +9,13 @@ return {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
-    "zbirenbaum/copilot-cmp",
+    {
+      "zbirenbaum/copilot-cmp",
+      dependencies = { "zbirenbaum/copilot.lua" },
+      config = function()
+        require("copilot_cmp").setup()
+      end,
+    },
   },
   config = function()
     local cmp = require("cmp")
@@ -17,9 +23,6 @@ return {
 
     -- Load VSCode-style snippets lazily
     require("luasnip.loaders.from_vscode").lazy_load()
-
-    -- Enable Copilot integration
-    require("copilot_cmp").setup()
 
     cmp.setup({
       snippet = {
@@ -53,9 +56,8 @@ return {
         end,
       },
       experimental = {
-        ghost_text = true, -- Show ghost text for completions
+        ghost_text = true,
       },
     })
   end,
 }
-
