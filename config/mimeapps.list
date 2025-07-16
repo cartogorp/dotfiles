@@ -1,11 +1,15 @@
+[Added Associations]
+image/jpeg=org.gnome.gThumb.desktop;org.gnome.eog.desktop;imv.desktop;pinta.desktop;satty.desktop;chromium.desktop;org.gnome.Loupe.desktop;firefox.desktop;swappy.desktop;imv-dir.desktop;
+image/png=org.gnome.gThumb.desktop;org.gnome.Loupe.desktop;imv-dir.desktop;satty.desktop;swappy.desktop;chromium.desktop;org.gnome.eog.desktop;pinta.desktop;imv.desktop;firefox.desktop;
+
 [Default Applications]
 application/pdf=org.gnome.Evince.desktop
-inode/directory=org.kde.dolphin.desktop
-image/jpeg=gthumb.desktop
-image/png=gthumb.desktop
-image/gif=gthumb.desktop
 image/bmp=gthumb.desktop
+image/gif=gthumb.desktop
+image/jpeg=org.gnome.gThumb.desktop;
+image/png=org.gnome.gThumb.desktop;
+image/svg+xml=gthumb.desktop
 image/tiff=gthumb.desktop
 image/webp=gthumb.desktop
-image/svg+xml=gthumb.desktop
 image/x-ms-bmp=gthumb.desktop
+inode/directory=org.kde.dolphin.desktop
