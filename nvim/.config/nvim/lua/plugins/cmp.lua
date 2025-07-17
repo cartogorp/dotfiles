@@ -12,7 +12,10 @@ return {
     {
       "zbirenbaum/copilot-cmp",
       dependencies = { "zbirenbaum/copilot.lua" },
+      -- 👇 This ensures it doesn't load before nvim-cmp
+      event = "InsertEnter",
       config = function()
+        -- Only safe to require this *after* nvim-cmp is loaded
         require("copilot_cmp").setup()
       end,
     },
@@ -21,7 +24,6 @@ return {
     local cmp = require("cmp")
     local luasnip = require("luasnip")
 
-    -- Load VSCode-style snippets lazily
     require("luasnip.loaders.from_vscode").lazy_load()
 
     cmp.setup({
