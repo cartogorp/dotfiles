@@ -10,7 +10,7 @@
           "style": "plain",
           "foreground": "#80cbc4",
           "background": "#18131e",
-          "template": "{{ if .WSL }}WSL at {{ end }}{{ .Icon }} "
+          "template": "{{ if .WSL }}WSL at {{ end }} "
         },
         {
           "type": "session",
@@ -40,11 +40,12 @@
           "style": "plain",
           "foreground": "#ffb74d",
           "background": "#18131e",
-          "template": " {{ .HEAD }}{{ if .Working.Changed }} {{ end }}{{ if gt .Ahead 0 }} ↑{{ end }}{{ if gt .Behind 0 }} ↓{{ end }} ",
+          "template": " {{ .HEAD | replace \"\" \"\" }}{{ if .Working.Changed }} {{ end }}{{ if gt .Ahead 0 }} ↑{{ end }}{{ if gt .Behind 0 }} ↓{{ end }} ",
           "properties": {
             "fetch_status": true,
             "truncate_symbol": "…",
-            "truncate_length": 20
+            "truncate_length": 20,
+            "plain_head": true
           }
         }
       ]

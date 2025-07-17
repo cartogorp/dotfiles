@@ -48,8 +48,8 @@ zinit ice wait lucid blockf atpull'zinit creinstall -q .'
 zinit load zsh-users/zsh-completions
 
 # Load prompt system for customization after theme if needed
-autoload -Uz promptinit
-promptinit
+# autoload -Uz promptinit
+# promptinit
 
 # Oh My Posh configuration (load after prompt system)
 if command -v oh-my-posh > /dev/null; then
