@@ -10,14 +10,14 @@
           "style": "plain",
           "foreground": "#80cbc4",
           "background": "#18131e",
-          "template": "{{ if .WSL }}WSL at {{ end }} "
+          "template": "{{ if .WSL }}WSL at {{ end }}  "
         },
         {
           "type": "session",
           "style": "plain",
           "foreground": "#ce93d8",
           "background": "#18131e",
-          "template": "  {{ .UserName }}{{ if .Env.SSH_CONNECTION }} @{{ .HostName }}{{ end }} ",
+          "template": " {{ .UserName }}{{ if .Env.SSH_CONNECTION }} @{{ .HostName }}{{ end }} ",
           "properties": {
             "cache_duration": "none"
           }
@@ -27,13 +27,14 @@
           "style": "plain",
           "foreground": "#4db6ac",
           "background": "#18131e",
+          "template": " {{ .Path }} ",
           "properties": {
             "home_icon": "~",
-            "folder_icon": ">",
+            "folder_icon": "/",
             "max_depth": 3,
             "truncate_to_repo": true,
-            "prefix": " "
-          }
+            "truncate_symbol": ""
+         }
         },
         {
           "type": "git",
