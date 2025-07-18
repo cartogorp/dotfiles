@@ -30,10 +30,10 @@
           "template": " {{ .Path }} ",
           "properties": {
             "home_icon": "~",
-            "folder_icon": "/",
+            "folder_icon": "",
             "max_depth": 3,
             "truncate_to_repo": true,
-            "truncate_symbol": ""
+            "truncate_symbol": ""
          }
         },
         {
@@ -44,7 +44,7 @@
           "template": " {{ .HEAD | replace \"\" \"\" }}{{ if .Working.Changed }} {{ end }}{{ if gt .Ahead 0 }} ↑{{ end }}{{ if gt .Behind 0 }} ↓{{ end }} ",
           "properties": {
             "fetch_status": true,
-            "truncate_symbol": "…",
+            "truncate_symbol": "",
             "truncate_length": 20,
             "plain_head": true
           }
